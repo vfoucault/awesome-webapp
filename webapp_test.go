@@ -1,14 +1,12 @@
-package main_test
+package main
 
 import (
 	"net/http"
 	"net/http/httptest"
 	"testing"
-
-	"github.com/vfoucault/awesome-webapp"
 )
 
-var app main.App
+var app App
 
 func TestHomePage(t *testing.T) {
 	app.Create()
@@ -42,4 +40,3 @@ func checkResponseCode(t *testing.T, expected, actual int) {
 		t.Errorf("Expected response code %d. Got %d\n", expected, actual)
 	}
 }
-
