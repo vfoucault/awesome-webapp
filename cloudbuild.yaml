@@ -1,19 +1,16 @@
 steps:
   - name: 'gcr.io/cloud-builders/go'
     args: ['mod', 'download']
-    env: ['PROJECT_ROOT=github.com/vfoucault/awesome-webapp', 'GO111MODULE=on']
+    env: ['PROJECT_ROOT=webapp', 'GO111MODULE=on']
   - name: 'gcr.io/cloud-builders/go'
-    args: ['mod', 'vendor']
-    env: ['PROJECT_ROOT=github.com/vfoucault/awesome-webapp', 'GO111MODULE=on']
-  - name: 'gcr.io/cloud-builders/go'
-    args: ['test', '-v']
-    env: ['PROJECT_ROOT=github.com/vfoucault/awesome-webapp']
+    args: ['test', 'webapp', '-v']
+    env: ['PROJECT_ROOT=webapp']
   - name: 'gcr.io/cloud-builders/go'
     args: ['install', '.']
-    env: ['PROJECT_ROOT=github.com/vfoucault/awesome-webapp']
+    env: ['PROJECT_ROOT=webapp']
   - name: 'gcr.io/cloud-builders/go'
-    args: ['build', 'main']
-    env: ['PROJECT_ROOT=github.com/vfoucault/awesome-webapp']
+    args: ['build', 'webapp']
+    env: ['PROJECT_ROOT=webapp']
 artifacts:
   objects:
     location: 'gs://vfoucault-targetrepo/'
