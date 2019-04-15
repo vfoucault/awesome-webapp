@@ -1,0 +1,11 @@
+steps:
+  - name: 'gcr.io/cloud-builders/go'
+    args: ['install', '.']
+    env: ['PROJECT_ROOT=main']
+  - name: 'gcr.io/cloud-builders/go'
+    args: ['build', 'main']
+    env: ['PROJECT_ROOT=main']
+artifacts:
+  objects:
+    location: 'gs://vfoucault-targetrepo/'
+    paths: ['hello']
